@@ -9,7 +9,7 @@ Status: ⬜ not started · 🟡 in progress · ✅ gate green
 | S1 | Safe model intake | Manual | load real .safetensors + .pt fixtures, iterate tensors; malformed handled | ✅ | 333f877 |
 | S2 | Fixture generator (INERT) | Auto | N clean + M poisoned artifacts + labeled manifest; smoke test | ✅ | 6d9936d |
 | S3 | Layer 1 — wrapper/opcode | Auto | flags malicious-opcode pickle; clean pass; unit tests per rule | ✅ | 71c7ed5 |
-| S4 | Layer 2a — LSB entropy | Auto | LSB-poisoned tensors flagged (recall≥0.90); clean FP≤0.05 | ⬜ | |
+| S4 | Layer 2a — LSB entropy | Auto | LSB-poisoned tensors flagged (recall≥0.90); clean FP≤0.05 | ✅ | |
 | S5 | Layer 2b/c — signature + dist | Auto | planted signatures recovered 100%; anomalies localized | ⬜ | |
 | S6 | Scoring engine + metrics | Manual | clean→CLEAN, poison→SUSP/MAL; metrics.py prints confusion | ⬜ | |
 | S7 | Explainable report | Auto | `scan --report out.html` emits JSON+HTML; snapshot test | ⬜ | |

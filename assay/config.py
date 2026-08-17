@@ -22,10 +22,21 @@ class Thresholds:
     safetensors_header_max_bytes: int = 100_000  # flag implausibly large safetensors JSON headers
 
     # Layer 2a: LSB entropy / randomness (steg_entropy.py)
-    entropy_suspicious: float = 0.85  # normalized Shannon entropy of LSB plane, 0-1
-    entropy_malicious: float = 0.95
-    monobit_p_value: float = 0.01  # NIST monobit test rejection threshold
-    runs_p_value: float = 0.01  # NIST runs test rejection threshold
+    entropy_suspicious: float = 0.85  # normalized Shannon entropy of LSB plane, 0-1 (reporting only —
+    entropy_malicious: float = 0.95  # see steg_entropy.py module docstring: natural float32 mantissa
+    #                                  noise already sits near this ceiling, so entropy alone cannot
+    #                                  gate a finding; it's attached as corroborating evidence instead.
+    monobit_p_value: float = 0.01  # NIST monobit test rejection threshold (corroborating evidence only)
+    runs_p_value: float = 0.01  # NIST runs test rejection threshold (corroborating evidence only)
+    lsb_bit_planes: int = 8  # k: low mantissa bit-planes examined, 0 (LSB) .. k-1
+    lsb_run_test_min_bit: int = 3  # skip bits below this in the longest-run test: bits 0-2 are
+    #                                 rounding-noise-dominated even in clean trained weights and
+    #                                 produce spurious long runs (empirically verified against the
+    #                                 S2 fixture set); bits >=3 are not, and still cover the full
+    #                                 low byte our own LSB fixtures overwrite (S2 embeds 8 bits).
+    run_test_p_value: float = 0.01  # longest-constant-bit-run significance threshold
+    entropy_window_size: int = 32  # sliding-window size (elements) for localization profiling
+    entropy_window_stride: int = 16
 
     # Layer 2c: distribution anomaly (distribution.py)
     kurtosis_z_score: float = 3.0  # z-score vs layer-type baseline
