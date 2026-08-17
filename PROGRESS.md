@@ -5,7 +5,7 @@ Status: ⬜ not started · 🟡 in progress · ✅ gate green
 
 | # | Session | Mode | Gate (one line) | Status | Commit |
 |---|---------|------|-----------------|--------|--------|
-| S0 | Scaffold & data contracts | Manual | `scan` on dummy returns valid empty ScanReport; pytest+ruff green | ⬜ | |
+| S0 | Scaffold & data contracts | Manual | `scan` on dummy returns valid empty ScanReport; pytest+ruff green | ✅ | 8d1d69f |
 | S1 | Safe model intake | Manual | load real .safetensors + .pt fixtures, iterate tensors; malformed handled | ⬜ | |
 | S2 | Fixture generator (INERT) | Auto | N clean + M poisoned artifacts + labeled manifest; smoke test | ⬜ | |
 | S3 | Layer 1 — wrapper/opcode | Auto | flags malicious-opcode pickle; clean pass; unit tests per rule | ⬜ | |
