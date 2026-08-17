@@ -39,8 +39,9 @@ class Thresholds:
     entropy_window_stride: int = 16
 
     # Layer 2c: distribution anomaly (distribution.py)
-    kurtosis_z_score: float = 3.0  # z-score vs layer-type baseline
+    kurtosis_z_score: float = 3.0  # z-score vs layer-type baseline / within-tensor block baseline
     denormal_fraction: float = 0.01
+    distribution_block_count: int = 24  # non-overlapping blocks per tensor for localized-anomaly scan
 
     # Scoring bands (risk_score 0-100)
     band_clean_max: float = 20.0  # score < this -> CLEAN
