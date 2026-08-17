@@ -18,6 +18,9 @@ from typing import Any
 class Thresholds:
     """Detection thresholds, one field per layer rule. Placeholders — tuned in S4-S6."""
 
+    # Layer 1: wrapper/opcode/archive analysis (wrapper.py)
+    safetensors_header_max_bytes: int = 100_000  # flag implausibly large safetensors JSON headers
+
     # Layer 2a: LSB entropy / randomness (steg_entropy.py)
     entropy_suspicious: float = 0.85  # normalized Shannon entropy of LSB plane, 0-1
     entropy_malicious: float = 0.95
