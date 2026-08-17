@@ -16,6 +16,8 @@ dependencies = [
 dev = [
     "pytest>=8.0",
     "ruff>=0.4",
+    "medmnist>=3.0",
+    "torchvision>=0.17",
 ]
 
 [project.scripts]
